@@ -1,0 +1,478 @@
+<levels>
+  <level minimumMovesToWin='11' levelNumber='1'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='2' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='1' />
+    <character col='1' row='2' type='0' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='1' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='1' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='1' />
+    <character col='3' row='2' type='1' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='11' levelNumber='2'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='1' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='3' />
+    <character col='1' row='2' type='1' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='3' />
+    <character col='2' row='1' type='1' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='2' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='3' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='11' levelNumber='3'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='3' />
+    <character col='0' row='1' type='1' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='1' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='1' />
+    <character col='1' row='3' type='3' />
+    <character col='2' row='0' type='1' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='2' />
+  </level>
+  <level minimumMovesToWin='11' levelNumber='4'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='1' />
+    <character col='0' row='1' type='3' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='2' />
+    <character col='1' row='3' type='1' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='1' />
+    <character col='3' row='1' type='1' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='3' />
+  </level>
+  <level minimumMovesToWin='11' levelNumber='5'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='1' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='2' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='3' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='3' />
+    <character col='3' row='0' type='1' />
+    <character col='3' row='1' type='1' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='11' levelNumber='6'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='1' />
+    <character col='0' row='1' type='3' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='3' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='2' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='1' />
+    <character col='2' row='2' type='1' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='1' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='11' levelNumber='7'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='1' />
+    <character col='0' row='1' type='3' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='1' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='0' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='1' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='2' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='1' />
+    <character col='3' row='3' type='1' />
+  </level>
+  <level minimumMovesToWin='11' levelNumber='8'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='1' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='3' />
+    <character col='1' row='2' type='0' />
+    <character col='1' row='3' type='1' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='1' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='3' />
+    <character col='3' row='1' type='1' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='2' />
+  </level>
+  <level minimumMovesToWin='11' levelNumber='9'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='1' />
+    <character col='0' row='2' type='1' />
+    <character col='0' row='3' type='3' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='3' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='2' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='3' />
+    <character col='3' row='1' type='1' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='0' />
+  </level>
+  
+  <level minimumMovesToWin='12' levelNumber='10'>
+    <goal col='0' row='2' />
+    <character col='0' row='0' type='2' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='1' />
+    <character col='0' row='3' type='3' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='0' />
+    <character col='1' row='3' type='1' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='1' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='1' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='3' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='11'>
+    <goal col='3' row='0' />
+    <character col='0' row='0' type='2' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='1' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='1' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='1' />
+    <character col='3' row='1' type='1' />
+    <character col='3' row='2' type='3' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='12'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='2' />
+    <character col='0' row='2' type='1' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='3' />
+    <character col='1' row='3' type='1' />
+    <character col='2' row='0' type='1' />
+    <character col='2' row='1' type='3' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='3' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='13'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='3' />
+    <character col='1' row='1' type='1' />
+    <character col='1' row='2' type='1' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='3' />
+    <character col='2' row='2' type='1' />
+    <character col='2' row='3' type='2' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='3' />
+    <character col='3' row='3' type='0' />
+  </level>
+<level minimumMovesToWin='12' levelNumber='14'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='3' />
+    <character col='1' row='0' type='1' />
+    <character col='1' row='1' type='2' />
+    <character col='1' row='2' type='0' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='1' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='3' />
+    <character col='2' row='3' type='1' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='1' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='15'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='1' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='1' />
+    <character col='1' row='3' type='3' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='1' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='1' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='2' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='16'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='3' />
+    <character col='0' row='1' type='1' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='3' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='3' />
+    <character col='1' row='2' type='0' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='2' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='1' />
+    <character col='3' row='2' type='1' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='17'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='1' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='1' />
+    <character col='1' row='2' type='2' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='3' />
+    <character col='2' row='2' type='1' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='18'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='3' />
+    <character col='0' row='3' type='1' />
+    <character col='1' row='0' type='1' />
+    <character col='1' row='1' type='3' />
+    <character col='1' row='2' type='1' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='1' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='2' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='19'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='1' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='3' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='1' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='3' />
+    <character col='3' row='0' type='2' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='1' />
+    <character col='3' row='3' type='1' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='20'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='1' />
+    <character col='0' row='1' type='1' />
+    <character col='0' row='2' type='1' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='1' />
+    <character col='1' row='1' type='3' />
+    <character col='1' row='2' type='0' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='2' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='21'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='1' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='3' />
+    <character col='1' row='1' type='1' />
+    <character col='1' row='2' type='0' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='2' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='3' />
+    <character col='3' row='0' type='1' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='1' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='22'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='1' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='1' />
+    <character col='0' row='3' type='2' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='1' />
+    <character col='1' row='2' type='0' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='3' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='1' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='0' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='23'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='1' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='2' />
+    <character col='1' row='1' type='0' />
+    <character col='1' row='2' type='3' />
+    <character col='1' row='3' type='1' />
+    <character col='2' row='0' type='0' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='1' />
+    <character col='3' row='2' type='1' />
+    <character col='3' row='3' type='0' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='24'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='0' />
+    <character col='0' row='2' type='1' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='1' />
+    <character col='1' row='2' type='0' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='3' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='0' />
+    <character col='2' row='3' type='3' />
+    <character col='3' row='0' type='0' />
+    <character col='3' row='1' type='2' />
+    <character col='3' row='2' type='1' />
+    <character col='3' row='3' type='1' />
+  </level>
+  <level minimumMovesToWin='12' levelNumber='25'>
+    <goal col='0' row='0' />
+    <character col='0' row='0' type='0' />
+    <character col='0' row='1' type='2' />
+    <character col='0' row='2' type='0' />
+    <character col='0' row='3' type='0' />
+    <character col='1' row='0' type='0' />
+    <character col='1' row='1' type='1' />
+    <character col='1' row='2' type='0' />
+    <character col='1' row='3' type='0' />
+    <character col='2' row='0' type='3' />
+    <character col='2' row='1' type='0' />
+    <character col='2' row='2' type='1' />
+    <character col='2' row='3' type='0' />
+    <character col='3' row='0' type='1' />
+    <character col='3' row='1' type='0' />
+    <character col='3' row='2' type='1' />
+    <character col='3' row='3' type='0' />
+  </level>
+</levels>
