@@ -15,6 +15,7 @@
 
 #include <stdlib.h>
 
+@class LocalyticsSession;
 
 LillyPad *lillypads[4][4];
 
@@ -1310,9 +1311,62 @@ CDLongAudioSource* bgMusic;
 				[prefs setInteger:playersScore forKey:[NSString stringWithFormat:@"%i-%i",self.levelGroup,currentLevel]];
 				[prefs synchronize];
 			}
+            
+            CCLOG(@"Level Finished: %i-%i", self.levelGroup, currentLevel);
+            if(self.levelGroup==0 && currentLevel==4){
+                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_TRAINING"];
+            }
+            
+            if(self.levelGroup==0 && currentLevel==25){
+                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_0"];
+            }
 			
-
-			
+            if(self.levelGroup==1 && currentLevel==25){
+                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_1"];
+            }
+            
+			if(self.levelGroup==2 && currentLevel==25){
+                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_2"];
+            }
+            
+            if(self.levelGroup==3 && currentLevel==25){
+                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_3"];
+            }
+            
+            if(self.levelGroup==4 && currentLevel==25){
+                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_4"];
+            }
+            
+            
+            switch (currentLevel) {
+                case 5:
+                    CCLOG(@"Test");
+                    NSString *levelFiveComplete = [NSString stringWithFormat:@"COMPLETED_POND_%i_LEVEL_5", self.levelGroup];
+                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelFiveComplete];
+                    break;
+                case 10:
+                    CCLOG(@"Test");
+                    NSString *levelTenComplete = [NSString stringWithFormat:@"COMPLETED_POND_%i_LEVEL_10", self.levelGroup];
+                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelTenComplete];
+                    break;    
+                case 15:
+                    CCLOG(@"Test");
+                    NSString *levelFifteenComplete = [NSString stringWithFormat:@"COMPLETED_POND_%i_LEVEL_15", self.levelGroup];
+                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelFifteenComplete];
+                    break;    
+                case 20:
+                    CCLOG(@"Test");
+                    NSString *levelTwentyComplete = [NSString stringWithFormat:@"COMPLETED_POND_%i_LEVEL_20", self.levelGroup];
+                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelTwentyComplete];
+                    break;    
+                case 25:
+                    CCLOG(@"Test");
+                    NSString *levelTwentyFiveComplete = [NSString stringWithFormat:@"COMPLETED_POND_%i_LEVEL_25", self.levelGroup];
+                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelTwentyFiveComplete];
+                    break;  
+                default:
+                    break;
+            }
 			
 			CCColorLayer *backdrop=[CCColorLayer layerWithColor: ccc4(0x00, 0x00, 0x00, 0x7C)];
 			[self addChild:backdrop z:5 tag:1];
@@ -1341,7 +1395,7 @@ CDLongAudioSource* bgMusic;
 				CCMenuItem *shareScoreButton=[CCMenuItemFont itemFromString:@"Share Pond Score..." target:self selector:@selector(shareLevelScore) ];
 				menu=[CCMenu menuWithItems:nextLevel,restartLevel,shareScoreButton,mainMenuButton,nil];
 			//menu.position=ccp(windowSize.width/2, windowSize.height-.25*windowSize.height);
-			menu.color=ccYELLOW;
+//			menu.color=ccYELLOW;
 			[menu alignItemsVertically];
 			menu.position=ccp(windowSize.width/2,(.33*windowSize.height));
 			[self addChild:menu z:7 tag:3];

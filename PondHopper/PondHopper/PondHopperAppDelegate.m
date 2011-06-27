@@ -13,6 +13,7 @@
 #import "RootViewController.h"
 #import "MainMenuController.h"
 #import "Appirater.h"
+#import "LocalyticsSession.h"
 //#import "TapjoyConnect.h"
 
 @implementation PondHopperAppDelegate
@@ -21,10 +22,6 @@
 
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
-	
-	//For 3d Effects
-//	[[CCDirector sharedDirector] setDepthBufferFormat:kDepthBuffer16];
-//	[[CCDirector sharedDirector] setPixelFormat:kPixelFormatRGBA8888];
 	
 	NSUserDefaults *prefs= [NSUserDefaults standardUserDefaults];
 
@@ -120,6 +117,9 @@
 	
 	//Uncomment before release:
 	//
+    [LocalyticsSession sharedLocalyticsSession].backgroundSessionTimeout = 60;
+    [[LocalyticsSession sharedLocalyticsSession] startSession:@"3ca97e3bfa400e082995a4c-af30c16e-a018-11e0-0120-007f58cb3154"];
+    [[LocalyticsSession sharedLocalyticsSession] open];
 }
 
 
@@ -139,12 +139,18 @@
 
 -(void) applicationDidEnterBackground:(UIApplication*)application {
 	[[CCDirector sharedDirector] stopAnimation];
+    [[LocalyticsSession sharedLocalyticsSession] close];
+	[[LocalyticsSession sharedLocalyticsSession] upload];
+//    NSLog(@"Uploaded analytics");
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application {
 	[[CCDirector sharedDirector] startAnimation];
 	//CCLOG(@"Loading appirater");
 	//[Appirater appLaunched];
+    [[LocalyticsSession sharedLocalyticsSession] resume];
+	[[LocalyticsSession sharedLocalyticsSession] upload];
+//        NSLog(@"Uploaded analytics");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -157,6 +163,8 @@
 	[window release];
 	
 	[director end];	
+    [[LocalyticsSession sharedLocalyticsSession] close];
+    [[LocalyticsSession sharedLocalyticsSession] upload];
 }
 
 - (void)applicationSignificantTimeChange:(UIApplication *)application {

@@ -311,6 +311,8 @@
 		2996B17C13B81A3F007D34FF /* Icon-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2996B17B13B81A3F007D34FF /* Icon-ipad.png */; };
 		2996B17E13B81A51007D34FF /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2996B17D13B81A51007D34FF /* Default-Portrait~ipad.png */; };
 		2996B18013B81A57007D34FF /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2996B17F13B81A57007D34FF /* Default-Landscape~ipad.png */; };
+		29D8953C13B8234A00032C72 /* LocalyticsSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D8953713B8234A00032C72 /* LocalyticsSession.m */; };
+		29D8953D13B8234A00032C72 /* UploaderThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D8953913B8234A00032C72 /* UploaderThread.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -822,6 +824,11 @@
 		2996B17B13B81A3F007D34FF /* Icon-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-ipad.png"; sourceTree = "<group>"; };
 		2996B17D13B81A51007D34FF /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		2996B17F13B81A57007D34FF /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		29D8953713B8234A00032C72 /* LocalyticsSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalyticsSession.m; sourceTree = "<group>"; };
+		29D8953813B8234A00032C72 /* LocalyticsSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalyticsSession.h; sourceTree = "<group>"; };
+		29D8953913B8234A00032C72 /* UploaderThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploaderThread.m; sourceTree = "<group>"; };
+		29D8953A13B8234A00032C72 /* WebserviceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebserviceConstants.h; sourceTree = "<group>"; };
+		29D8953B13B8234A00032C72 /* UploaderThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploaderThread.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1316,6 +1323,7 @@
 		294F561113B80D6F008DAED8 /* Resource Classes */ = {
 			isa = PBXGroup;
 			children = (
+				29D8953F13B8235200032C72 /* Localytics */,
 				294F573F13B80FDB008DAED8 /* ShareKit */,
 				294F56EA13B80F07008DAED8 /* NSDataAdditions.h */,
 				294F56EB13B80F07008DAED8 /* NSDataAdditions.m */,
@@ -1731,6 +1739,18 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		29D8953F13B8235200032C72 /* Localytics */ = {
+			isa = PBXGroup;
+			children = (
+				29D8953713B8234A00032C72 /* LocalyticsSession.m */,
+				29D8953813B8234A00032C72 /* LocalyticsSession.h */,
+				29D8953913B8234A00032C72 /* UploaderThread.m */,
+				29D8953A13B8234A00032C72 /* WebserviceConstants.h */,
+				29D8953B13B8234A00032C72 /* UploaderThread.h */,
+			);
+			name = Localytics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
@@ -2098,6 +2118,8 @@
 				294F581513B80FDB008DAED8 /* SHKShareMenu.m in Sources */,
 				294F581613B80FDB008DAED8 /* SHKViewControllerWrapper.m in Sources */,
 				2996B17813B81919007D34FF /* Appirater.m in Sources */,
+				29D8953C13B8234A00032C72 /* LocalyticsSession.m in Sources */,
+				29D8953D13B8234A00032C72 /* UploaderThread.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2172,6 +2194,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shawn Grimes";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PondHopper/Prefix.pch;
@@ -2180,6 +2203,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3FFACD61-E73B-4B1D-8625-AA0877766D5D";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
