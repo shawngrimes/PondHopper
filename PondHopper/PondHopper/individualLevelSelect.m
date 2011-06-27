@@ -270,7 +270,7 @@ CGSize windowSize;
 		
 		CCMenuItem *mainMenuButton=[CCMenuItemFont itemFromString:@"Main Menu" target:self selector:@selector(showMainMenu)];
 		CCMenu *newMenu=[CCMenu menuWithItems:mainMenuButton,nil];
-		newMenu.color=ccYELLOW;
+		//newMenu.color=ccYELLOW;
 		newMenu.position=ccp(windowSize.width/2,windowSize.height/7);
 		[self addChild:newMenu z:1 tag:0];
 		//[newMenu alignItemsInRows:[NSNumber numberWithInt:[ElementLevelCount integerValue] % 5],nil];

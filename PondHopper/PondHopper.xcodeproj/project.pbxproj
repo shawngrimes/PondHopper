@@ -315,16 +315,6 @@
 		29D8953D13B8234A00032C72 /* UploaderThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D8953913B8234A00032C72 /* UploaderThread.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		294F581B13B81066008DAED8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 294F549013B80C96008DAED8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 294F581713B81025008DAED8;
-			remoteInfo = SpritSheet;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		294F549913B80C96008DAED8 /* PondHopper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PondHopper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		294F549D13B80C96008DAED8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1782,7 +1772,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				294F581C13B81066008DAED8 /* PBXTargetDependency */,
 			);
 			name = PondHopper;
 			productName = PondHopper;
@@ -2124,14 +2113,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		294F581C13B81066008DAED8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 294F581713B81025008DAED8 /* SpritSheet */;
-			targetProxy = 294F581B13B81066008DAED8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		294F560913B80C99008DAED8 /* Debug */ = {
