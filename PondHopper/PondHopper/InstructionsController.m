@@ -42,7 +42,7 @@ static const ccColor3B ccBlack={0, 0, 0};
 		// ask director the the window size
 		windowSize = [[CCDirector sharedDirector] winSize];
 		
-		CCColorLayer *backgroundColor=[CCColorLayer layerWithColor:ccc4(0, 210, 255, 255)];
+		CCLayerColor *backgroundColor=[CCColorLayer layerWithColor:ccc4(0, 210, 255, 255)];
 		[self addChild:backgroundColor z:0];
 		
 		//Setup Background

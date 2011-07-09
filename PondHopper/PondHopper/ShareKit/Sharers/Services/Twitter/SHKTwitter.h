@@ -29,6 +29,8 @@
 #import "SHKOAuthSharer.h"
 #import "SHKTwitterForm.h"
 
+@class FlurryAPI;
+
 @interface SHKTwitter : SHKOAuthSharer 
 {	
 	BOOL xAuth;		

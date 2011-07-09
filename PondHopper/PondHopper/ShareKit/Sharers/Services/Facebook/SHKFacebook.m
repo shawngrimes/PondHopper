@@ -174,7 +174,9 @@
 		dialog.actionLinks = [NSString stringWithFormat:@"[{\"text\":\"Get %@\",\"href\":\"%@\"}]",
 							  SHKEncode(SHKMyAppName),
 							  SHKEncode(SHKMyAppURL)];
-		[dialog show];
+		[FlurryAPI logEvent:@"FACEBOOK_SCORE"];
+        [dialog show];
+        
 		
 	}
 	

@@ -102,7 +102,6 @@
     <character col='3' row='2' type='0' />
     <character col='3' row='3' type='0' />
   </level>
-</level>
 <level minimumMovesToWin='2' levelNumber='9'>
     <goal col='0' row='0' />
     <character col='0' row='0' type='0' />

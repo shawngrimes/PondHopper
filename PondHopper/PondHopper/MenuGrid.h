@@ -24,7 +24,7 @@ typedef enum
 	CCMenuItem *selectedItem;
 	
 	CGPoint padding;
-	
+    
 	// CCRGBAProtocol protocol
 	GLubyte		opacity_;
 	ccColor3B	color_;
