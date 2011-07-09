@@ -39,7 +39,18 @@ static const ccColor3B ccBlack={0, 0, 0};
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
-		
+		NSUserDefaults *prefs= [NSUserDefaults standardUserDefaults];
+        int playMusic=[((NSNumber*)[prefs valueForKey:@"MUSIC"]) integerValue];
+        
+        if((![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying]) && !(playMusic)){
+            [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"banjoTune.caf"];
+            [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"banjoTune.caf" loop:NO];
+        }
+
+        if([self isGameCenterAvailable]){
+			[self authenticateLocalPlayer];
+		}
+        
 		self.isTouchEnabled=YES;
 		[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 		
@@ -77,7 +88,7 @@ static const ccColor3B ccBlack={0, 0, 0};
 			[CCMenuItemFont setFontSize:24];
 		}
 		
-//		CCBitmapFontAtlas *label = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"Hello World" fntFile:@"bitmapFontTest.fnt"];
+        //CCBitmapFontAtlas *label = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"Hello World" fntFile:@"bitmapFontTest.fnt"];
 		//CCLabelBMFont *startLabel=[CCLabelBMFont labelWithString:@"START" fntFile:@"CHUBBY.fnt"];
 		//[self addChild:startLabel];
 		//CCMenuItem *startMenuItem=[CCMenuItemLabel itemWithLabel:startLabel target:self selector:@selector(startGame)];
@@ -102,11 +113,6 @@ static const ccColor3B ccBlack={0, 0, 0};
 		[inGameMenu alignItemsVertically];
 		[self addChild:inGameMenu z:1];
 		
-		if([self isGameCenterAvailable]){
-			[self authenticateLocalPlayer];
-		}
-		
-		
 	}
 	
 	NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
@@ -120,14 +126,9 @@ static const ccColor3B ccBlack={0, 0, 0};
 	versionLabel.position=ccp(windowSize.width/2, windowSize.height/3.5);
 	[self addChild:versionLabel z:1];
 	
-	NSUserDefaults *prefs= [NSUserDefaults standardUserDefaults];
-	int playMusic=[((NSNumber*)[prefs valueForKey:@"MUSIC"]) integerValue];
 	
-	if((![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying]) && !(playMusic)){
-		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"banjoTune.caf"];
-		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"banjoTune.caf" loop:NO];
-	}
-	return self;
+	
+		return self;
 }
 
 -(void) startGame{
@@ -231,6 +232,7 @@ static const ccColor3B ccBlack={0, 0, 0};
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
 {
     [viewController dismissModalViewControllerAnimated:YES];
+    viewController.leaderboardDelegate=nil;
 	[viewController.view removeFromSuperview];
 }
 

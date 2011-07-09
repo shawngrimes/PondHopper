@@ -15,7 +15,7 @@
 
 #include <stdlib.h>
 
-@class LocalyticsSession;
+@class FlurryAPI;
 
 LillyPad *lillypads[4][4];
 
@@ -270,13 +270,13 @@ CDLongAudioSource* bgMusic;
 		NSMutableArray *lilyPadSplashAnimFrames=[NSMutableArray array];
 		[lilyPadSplashAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"LilyPad-splash.png"]];
 		[lilyPadSplashAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"LilyPad.png"]];
-		CCAnimation *lilyPadAnim=[CCAnimation animationWithName:@"lilyPadSplash" delay:0.2f frames:lilyPadSplashAnimFrames];
+         CCAnimation *lilyPadAnim=[CCAnimation animationWithFrames:lilyPadSplashAnimFrames delay:0.2f];
 		self.LilyPadAction=[CCAnimate actionWithAnimation:lilyPadAnim restoreOriginalFrame:NO];
 
 		NSMutableArray *lilyPadFlowerSplashAnimFrames=[NSMutableArray array];
 		[lilyPadFlowerSplashAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"LilyPadFlower-splash.png"]];
 		[lilyPadFlowerSplashAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"LilyPadFlower.png"]];
-		CCAnimation *lilyPadFlowerAnim=[CCAnimation animationWithName:@"lilyPadFlowerSplash" delay:0.2f frames:lilyPadFlowerSplashAnimFrames];
+		CCAnimation *lilyPadFlowerAnim=[CCAnimation  animationWithFrames:lilyPadFlowerSplashAnimFrames delay:0.2f];
 		self.LilyPadFlowerAction=[CCAnimate actionWithAnimation:lilyPadFlowerAnim restoreOriginalFrame:NO];
 		
 		
@@ -287,7 +287,7 @@ CDLongAudioSource* bgMusic;
 		[fatFrogAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"FatFrog0.png"]];
 		//[fatFrogAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"FatFrog0.png"]];
 		
-		CCAnimation *fatFrogAnim=[CCAnimation animationWithName:@"fatFrogBlink" delay:0.2f frames:fatFrogAnimFrames];
+		CCAnimation *fatFrogAnim=[CCAnimation animationWithFrames:fatFrogAnimFrames delay:0.2f];
 		self.LargeFrogBlinkAction=[CCAnimate actionWithAnimation:fatFrogAnim restoreOriginalFrame:NO];
 		
 		NSMutableArray *dragonFlyAnimFrames=[NSMutableArray array];
@@ -296,7 +296,7 @@ CDLongAudioSource* bgMusic;
 		[dragonFlyAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"DragonFlyBlink1.png"]];
 		[dragonFlyAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"DragonFly0.png"]];
 		
-		CCAnimation *dragonFlyAnim=[CCAnimation animationWithName:@"dragonFlyJump" delay:0.2f frames:dragonFlyAnimFrames];
+		CCAnimation *dragonFlyAnim=[CCAnimation animationWithFrames:dragonFlyAnimFrames delay:0.2f];
 		self.DragonFlyAction =[CCAnimate actionWithAnimation:dragonFlyAnim restoreOriginalFrame:NO];
 		
 		NSMutableArray *treeFrogAnimFrames=[NSMutableArray array];
@@ -305,7 +305,7 @@ CDLongAudioSource* bgMusic;
 		[treeFrogAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"TreeFrogBlink1.png"]];
 		[treeFrogAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"TreeFrog0.png"]];
 		
-		CCAnimation *treeFrogAnim=[CCAnimation animationWithName:@"treeFrogJump" delay:0.2f frames:treeFrogAnimFrames];
+		CCAnimation *treeFrogAnim=[CCAnimation animationWithFrames:treeFrogAnimFrames delay:0.2f];
 		self.TreeFrogAction =[CCAnimate actionWithAnimation:treeFrogAnim restoreOriginalFrame:NO];
 		
 		NSMutableArray *LargeFrogFlyAnimFrames=[NSMutableArray array];
@@ -313,7 +313,7 @@ CDLongAudioSource* bgMusic;
 			[LargeFrogFlyAnimFrames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"FatFrogMosquito%i.png", frameX]]];	
 		}
 		
-		CCAnimation *LargeFrogFlyAnim=[CCAnimation animationWithName:@"FatFrogFlyEat" delay:0.1f frames:LargeFrogFlyAnimFrames];
+		CCAnimation *LargeFrogFlyAnim=[CCAnimation animationWithFrames:LargeFrogFlyAnimFrames delay:0.1f];
 		
 		self.LargeFrogFlyAction=[CCAnimate actionWithAnimation:LargeFrogFlyAnim restoreOriginalFrame:YES];
 		
@@ -832,7 +832,7 @@ CDLongAudioSource* bgMusic;
 
 #pragma mark Game Controls
 -(void) loadLevelFromGroup:(int) levelGroup  level:(int)levelNumber{
-	
+	[[CDAudioManager sharedManager] setBackgroundMusicCompletionListener:nil selector:nil];
 	if(!dontPlayMusic){
 		if([[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying]){
 			[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
@@ -1248,6 +1248,10 @@ CDLongAudioSource* bgMusic;
 }
 
 -(void)restartLevel{
+    if(lastPlayedFile){
+		CCLOG(@"Stopping sfx 3");
+		[[SimpleAudioEngine sharedEngine] stopEffect:lastPlayedFile];
+	}
 	if([self getChildByTag:85]){
 		[self removeChild:[self getChildByTag:87] cleanup:YES];
 		[self removeChild:[self getChildByTag:85] cleanup:YES];
@@ -1258,19 +1262,30 @@ CDLongAudioSource* bgMusic;
 }
 
 -(void)nextLevel{
+    if(lastPlayedFile){
+		CCLOG(@"Stopping sfx 3");
+		[[SimpleAudioEngine sharedEngine] stopEffect:lastPlayedFile];
+	}
 	moveCount=0;
 	restartCount=0;
 	[self loadLevelFromGroup:self.levelGroup  level:currentLevel];
 }
 
 -(void)goBackLevel{
+    if(lastPlayedFile){
+		CCLOG(@"Stopping sfx 3");
+		[[SimpleAudioEngine sharedEngine] stopEffect:lastPlayedFile];
+	}
 	moveCount=0;
 	restartCount=0;
 		[self loadLevelFromGroup:self.levelGroup  level:--currentLevel];
 }
 
 -(void) displayWinner{
-	
+	if(lastPlayedFile){
+		CCLOG(@"Stopping sfx 3");
+		[[SimpleAudioEngine sharedEngine] stopEffect:lastPlayedFile];
+	}
 	
 		if(![self getChildByTag:4].visible){
 			
@@ -1313,28 +1328,36 @@ CDLongAudioSource* bgMusic;
 			}
             
             CCLOG(@"Level Finished: %i-%i", self.levelGroup, currentLevel);
+            
+            
+            
             if(self.levelGroup==0 && currentLevel==4){
-                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_TRAINING"];
+                [FlurryAPI logEvent:@"COMPLETED_TRAINING"];
             }
             
             if(self.levelGroup==0 && currentLevel==25){
-                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_0"];
+//                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_0"];
+                                [FlurryAPI logEvent:@"COMPLETED_POND_0"];
             }
 			
             if(self.levelGroup==1 && currentLevel==25){
-                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_1"];
+//                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_1"];
+                                [FlurryAPI logEvent:@"COMPLETED_POND_1"];
             }
             
 			if(self.levelGroup==2 && currentLevel==25){
-                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_2"];
+//                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_2"];
+                                [FlurryAPI logEvent:@"COMPLETED_POND_2"];
             }
             
             if(self.levelGroup==3 && currentLevel==25){
-                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_3"];
+//                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_3"];
+                                [FlurryAPI logEvent:@"COMPLETED_POND_3"];
             }
             
             if(self.levelGroup==4 && currentLevel==25){
-                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_4"];
+//                [[LocalyticsSession sharedLocalyticsSession] tagEvent:@"COMPLETED_POND_4"];
+                                [FlurryAPI logEvent:@"COMPLETED_POND_4"];
             }
             
             
@@ -1342,33 +1365,38 @@ CDLongAudioSource* bgMusic;
                 case 5:
                     CCLOG(@"Test");
                     NSString *levelFiveComplete = [NSString stringWithFormat:@"COMPLETED_POND_%i_LEVEL_5", self.levelGroup];
-                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelFiveComplete];
+//                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelFiveComplete];
+                    [FlurryAPI logEvent:levelFiveComplete];
                     break;
                 case 10:
                     CCLOG(@"Test");
                     NSString *levelTenComplete = [NSString stringWithFormat:@"COMPLETED_POND_%i_LEVEL_10", self.levelGroup];
-                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelTenComplete];
+//                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelTenComplete];
+                     [FlurryAPI logEvent:levelTenComplete];
                     break;    
                 case 15:
                     CCLOG(@"Test");
                     NSString *levelFifteenComplete = [NSString stringWithFormat:@"COMPLETED_POND_%i_LEVEL_15", self.levelGroup];
-                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelFifteenComplete];
+//                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelFifteenComplete];
+                     [FlurryAPI logEvent:levelFifteenComplete];
                     break;    
                 case 20:
                     CCLOG(@"Test");
                     NSString *levelTwentyComplete = [NSString stringWithFormat:@"COMPLETED_POND_%i_LEVEL_20", self.levelGroup];
-                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelTwentyComplete];
+//                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelTwentyComplete];
+                     [FlurryAPI logEvent:levelTwentyComplete];
                     break;    
                 case 25:
                     CCLOG(@"Test");
                     NSString *levelTwentyFiveComplete = [NSString stringWithFormat:@"COMPLETED_POND_%i_LEVEL_25", self.levelGroup];
-                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelTwentyFiveComplete];
+//                    [[LocalyticsSession sharedLocalyticsSession] tagEvent:levelTwentyFiveComplete];
+                     [FlurryAPI logEvent:levelTwentyFiveComplete];
                     break;  
                 default:
                     break;
             }
 			
-			CCColorLayer *backdrop=[CCColorLayer layerWithColor: ccc4(0x00, 0x00, 0x00, 0x7C)];
+			CCLayerColor *backdrop=[CCColorLayer layerWithColor: ccc4(0x00, 0x00, 0x00, 0x7C)];
 			[self addChild:backdrop z:5 tag:1];
 			
 			/*
@@ -1388,14 +1416,14 @@ CDLongAudioSource* bgMusic;
 			}
 			
 			
-			CCMenuItem *nextLevel=[CCMenuItemFont itemFromString:@"Next Puzzle" target:self selector:@selector(nextLevel)];
-			CCMenuItem *restartLevel=[CCMenuItemFont itemFromString:@"Restart Puzzle" target:self selector:@selector(goBackLevel) ];
+			CCMenuItem *nextLevel=[CCMenuItemFont itemFromString:@"Next Level" target:self selector:@selector(nextLevel)];
+			CCMenuItem *restartLevel=[CCMenuItemFont itemFromString:@"Restart Level" target:self selector:@selector(goBackLevel) ];
 			CCMenuItem *mainMenuButton=[CCMenuItemFont itemFromString:@"Main Menu" target:self selector:@selector(showMainMenu) ];
 			CCMenu *menu;
 				CCMenuItem *shareScoreButton=[CCMenuItemFont itemFromString:@"Share Pond Score..." target:self selector:@selector(shareLevelScore) ];
 				menu=[CCMenu menuWithItems:nextLevel,restartLevel,shareScoreButton,mainMenuButton,nil];
 			//menu.position=ccp(windowSize.width/2, windowSize.height-.25*windowSize.height);
-//			menu.color=ccYELLOW;
+			[menu setColor:ccYELLOW];
 			[menu alignItemsVertically];
 			menu.position=ccp(windowSize.width/2,(.33*windowSize.height));
 			[self addChild:menu z:7 tag:3];
@@ -1475,6 +1503,7 @@ CDLongAudioSource* bgMusic;
 
 -(void) shareLevelScore{
 	int levelFinalScore=[self getLevelScore];
+    [FlurryAPI logEvent:@"SHARING_SCORE"];
 	SHKItem *item = [SHKItem text:[NSString stringWithFormat:@"I scored %i in the %@ on Pond Hopper http://mcaf.ee/fdb1c", levelFinalScore, [self getLevelGroupName:self.levelGroup]]];
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
 	[actionSheet showInView:[CCDirector sharedDirector].openGLView ];
@@ -1509,6 +1538,10 @@ CDLongAudioSource* bgMusic;
 
 
 -(void)showMainMenu{
+    if(lastPlayedFile){
+		CCLOG(@"Stopping sfx 3");
+		[[SimpleAudioEngine sharedEngine] stopEffect:lastPlayedFile];
+	}
 	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	[self stopAllActions];
 	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.5f scene:[MainMenuController scene]]];	
@@ -1720,8 +1753,11 @@ CDLongAudioSource* bgMusic;
 #pragma mark inGameMenu
 -(void)showGameMenu{
 	//		CCColorLayer *background=[CCColorLayer layerWithColor: ccc4(0x00, 0x00, 0x00, 0xaa)];
-	
-	CCColorLayer *backdrop=[CCColorLayer layerWithColor: ccc4(0x00, 0x00, 0x00, 0xFF)];
+	if(lastPlayedFile){
+		CCLOG(@"Stopping sfx 3");
+		[[SimpleAudioEngine sharedEngine] stopEffect:lastPlayedFile];
+	}
+	CCLayerColor *backdrop=[CCLayerColor layerWithColor: ccc4(0x00, 0x00, 0x00, 0xFF)];
 	[self addChild:backdrop z:7 tag:85];
 	
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -1731,7 +1767,7 @@ CDLongAudioSource* bgMusic;
 		[CCMenuItemFont setFontSize:30];
 	}
 	
-	CCMenuItem *restartLevelMenuItem=[CCMenuItemFont itemFromString:@"Restart Puzzle" target:self selector:@selector(restartLevel)];
+	CCMenuItem *restartLevelMenuItem=[CCMenuItemFont itemFromString:@"Restart Level" target:self selector:@selector(restartLevel)];
 	CCMenuItem *selectLevelMenuItem=[CCMenuItemFont itemFromString:@"Select Level" target:self selector:@selector(showSelectLevel)];
 	//CCMenuItem *restartAllLevelsMenuItem=[CCMenuItemFont itemFromString:@"Restart All Levels" target:self selector:@selector(restartAllLevels)];
 	CCMenuItem *mainMenuButton=[CCMenuItemFont itemFromString:@"Main Menu" target:self selector:@selector(showMainMenu) ];
@@ -1784,6 +1820,8 @@ CDLongAudioSource* bgMusic;
 	[self unschedule:@selector(FrogFlyEatSelector:)];
 	[self stopAllActions];
 	[[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
+    [[CDAudioManager sharedManager] setBackgroundMusicCompletionListener:nil selector:nil];
+
 	[super onExit];
 }
 

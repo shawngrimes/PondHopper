@@ -62,5 +62,6 @@ typedef struct PadLocation {
 -(void) showHighlights;
 -(int) getLevelScore;
 -(void) reportFinalScore:(NSNumber *) finalScore;
+-(void)showNoMoreLevels;
 
 @end

@@ -294,6 +294,8 @@
 
 - (BOOL)send
 {	
+    
+    
 	// Check if we should send follow request too
 	if (xAuth && [item customBoolForSwitchKey:@"followMe"])
 		[self followMe];	
@@ -311,7 +313,7 @@
 		
 		// Notify delegate
 		[self sendDidStart];	
-		
+		[FlurryAPI logEvent:@"TWEETED_SCORE"];
 		return YES;
 	}
 	

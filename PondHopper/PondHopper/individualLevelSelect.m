@@ -156,12 +156,12 @@ CGSize windowSize;
 		{
 			// The device is an iPad running iPhone 3.2 or later.
 			CCLOG(@"Loading iPad background");
-			background =[CCSprite spriteWithFile:@"background-ipad.png"];
+			background =[CCSprite spriteWithFile:@"KoiPond-ipad.png"];
 		}
 		else
 		{
 			CCLOG(@"Loading iPhone background");
-			background =[CCSprite spriteWithFile:@"background.png"];
+			background =[CCSprite spriteWithFile:@"KoiPond.png"];
 		}
 		background.position=ccp(windowSize.width/2,windowSize.height/2);
 		[self addChild:background z:0];

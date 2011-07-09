@@ -41,13 +41,13 @@
 		// ask director the the window size
 		windowSize = [[CCDirector sharedDirector] winSize];
 		
-		CCColorLayer *backgroundColor=[CCColorLayer layerWithColor:ccc4(0, 210, 255, 255)];
+		CCLayerColor *backgroundColor=[CCColorLayer layerWithColor:ccc4(0, 210, 255, 255)];
 		[self addChild:backgroundColor z:0];
 		
 		//Setup Background
 		CCSprite *background;
 		CCLabelTTF *instructionsLabel;
-		NSString *instructionsString=[NSString stringWithFormat:@"Sorry, no more levels.  Try the full version of Pond Hopper for 5 levels and 125 puzzles."];
+		NSString *instructionsString=[NSString stringWithFormat:@"Sorry, more levels coming soon!"];
 		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 		{
 			// The device is an iPad running iPhone 3.2 or later.
@@ -94,7 +94,7 @@
 		CCMenuItem *startMenuItem=[CCMenuItemFont itemFromString:@"Buy Pond Hopper" target:self selector:@selector(buyPondHoper)];
 		CCMenuItem *mainMenuItem=[CCMenuItemFont itemFromString:@"Main Menu" target:self selector:@selector(showMainMenu)];
 		CCMenuItem *shareScoreButton=[CCMenuItemFont itemFromString:@"Share High Score..." target:self selector:@selector(shareLevelScore) ];
-		CCMenu *inGameMenu=[CCMenu menuWithItems:startMenuItem,shareScoreButton,mainMenuItem,nil];
+		CCMenu *inGameMenu=[CCMenu menuWithItems:shareScoreButton,mainMenuItem,nil];
 		inGameMenu.position=ccp(windowSize.width/2, windowSize.height-(.6*windowSize.height));
 		[inGameMenu setColor:ccYELLOW];
 		[inGameMenu alignItemsVertically];
@@ -127,7 +127,7 @@
 
 -(void) shareLevelScore{
 	int levelFinalScore=[self getFinalScore];
-	SHKItem *item = [SHKItem text:[NSString stringWithFormat:@"I beat Pond Hopper Lite with a score of %i http://mcaf.ee/fdb1c", levelFinalScore]];
+	SHKItem *item = [SHKItem text:[NSString stringWithFormat:@"I beat Pond Hopper with a score of %i http://mcaf.ee/fdb1c", levelFinalScore]];
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
 	[actionSheet showInView:[CCDirector sharedDirector].openGLView ];
 }

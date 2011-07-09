@@ -69,7 +69,7 @@
 -(void) dealloc
 {
 	CCLOG(@"dealloc %@", self);
-	
+    
 	[super dealloc];
 }
 
@@ -80,12 +80,8 @@
 	{
 		CGPoint newPosition = CGPointMake(self.position.x + col * padding.x, self.position.y - row * padding.y);
 		item.position = newPosition;
-		//for(CCSprite *childItem in item.children){
-		//	childItem.position=newPosition;
-		//}
-		
 		++itemCount;
-		
+        
 		if (fillStyle == kMenuGridFillColumnsFirst)
 		{
 			++col;
@@ -110,85 +106,86 @@
 }
 
 // copied from CCMenu
--(void) addChild:(CCMenuItem*)child z:(int)z tag:(int) aTag
+-(void) addChild:(CCMenuItem*)child z:(int)z tag:(int)aTag
 {
-	NSAssert( [child isKindOfClass:[CCMenuItem class]], @"Menu only supports MenuItem objects as children");
-	[super addChild:child z:z tag:aTag];
+	NSAssert([child isKindOfClass:[CCMenuItem class]], @"MenuGrid only supports MenuItem objects as children");
+    [super addChild:child z:z tag:aTag];
 }
 
-#pragma mark Menu - Touches
+// copied from CCMenu
+-(CCMenuItem*) itemForTouch:(UITouch*)touch
+{
+	CGPoint touchLocation = [touch locationInView: [touch view]];
+	touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
+	
+	for (CCMenuItem* item in [self children])
+	{
+		CGPoint local = [item convertToNodeSpace:touchLocation];
+		
+		CGRect r = [item rect];
+		r.origin = CGPointZero;
+		
+		if (CGRectContainsPoint(r, local))
+		{
+			return item;
+		}
+	}
+	
+	return nil;
+}
 
+// touch events copied from CCMenu
 -(void) registerWithTouchDispatcher
 {
 	[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:INT_MIN+1 swallowsTouches:YES];
 }
 
--(CCMenuItem *) itemForTouch: (UITouch *) touch
-{
-	CGPoint touchLocation = [touch locationInView: [touch view]];
-	touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
-	
-	touchLocation.x = touchLocation.x * CC_CONTENT_SCALE_FACTOR();
-	touchLocation.y = touchLocation.y * CC_CONTENT_SCALE_FACTOR();
-	
-	CCMenuItem* item;
-	CCARRAY_FOREACH(children_, item){
-		// ignore invisible and disabled items: issue #779, #866
-		if ( [item visible] && [item isEnabled] ) {
-			
-			CGPoint local = [item convertToNodeSpace:touchLocation];
-			
-			CGRect r = [item rect];
-			r.origin = CGPointZero;
-			
-			if( CGRectContainsPoint( r, local ) )
-				return item;
-		}
-	}
-	return nil;
-}
-
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	if( state != kCCMenuStateWaiting || !visible_ )
+	if (state != kMenuStateWaiting)
+	{
 		return NO;
+	}
 	
 	selectedItem = [self itemForTouch:touch];
 	[selectedItem selected];
 	
-	if( selectedItem ) {
-		state = kCCMenuStateTrackingTouch;
+	if (selectedItem)
+	{
+		state = kMenuStateTrackingTouch;
 		return YES;
 	}
+	
 	return NO;
 }
 
 -(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	NSAssert(state == kCCMenuStateTrackingTouch, @"[Menu ccTouchEnded] -- invalid state");
+	NSAssert(state == kMenuStateTrackingTouch, @"[Menu ccTouchEnded] -- invalid state");
 	
 	[selectedItem unselected];
 	[selectedItem activate];
 	
-	state = kCCMenuStateWaiting;
+	state = kMenuStateWaiting;
 }
 
 -(void) ccTouchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	NSAssert(state == kCCMenuStateTrackingTouch, @"[Menu ccTouchCancelled] -- invalid state");
+	NSAssert(state == kMenuStateTrackingTouch, @"[Menu ccTouchCancelled] -- invalid state");
 	
 	[selectedItem unselected];
 	
-	state = kCCMenuStateWaiting;
+	state = kMenuStateWaiting;
 }
 
 -(void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	NSAssert(state == kCCMenuStateTrackingTouch, @"[Menu ccTouchMoved] -- invalid state");
+	NSAssert(state == kMenuStateTrackingTouch, @"[Menu ccTouchMoved] -- invalid state");
 	
 	CCMenuItem *currentItem = [self itemForTouch:touch];
 	
-	if (currentItem != selectedItem) {
+	if (currentItem != selectedItem)
+	{
 		[selectedItem unselected];
 		selectedItem = currentItem;
 		[selectedItem selected];

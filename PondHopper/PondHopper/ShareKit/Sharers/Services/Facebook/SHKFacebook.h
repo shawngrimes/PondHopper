@@ -29,6 +29,8 @@
 #import "SHKSharer.h"
 #import "FBConnect.h"
 
+@class FlurryAPI;
+
 typedef enum 
 {
 	SHKFacebookPendingNone,
